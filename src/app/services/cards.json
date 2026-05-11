@@ -1,0 +1,54 @@
+[
+  {
+    "title": "Ordem de Servico",
+    "bannerKey": "osBanner",
+    "shortcut": [
+      "O.S. abertas",
+      "O.S. fechadas"
+    ],
+    "iconKeys": [
+      "OSOPEN",
+      "OSCLOSE"
+    ],
+    "route": "TestOS"
+  },
+  {
+    "title": "Pessoas",
+    "bannerKey": "pessoasBanner",
+    "shortcut": [
+      "Clientes",
+      "Fornecedores"
+    ],
+    "iconKeys": [
+      "CUSTOMERS",
+      "SUPPLIERS"
+    ],
+    "route": "PEOPLESCREEN"
+  },
+  {
+    "title": "Veiculos",
+    "bannerKey": "veiculosBanner",
+    "shortcut": [
+      "O.S Em Andamento",
+      "Historico"
+    ],
+    "iconKeys": [
+      "EMANDAMENTO",
+      "HISTORY"
+    ],
+    "route": "VEICULOSSCREEN"
+  },
+  {
+    "title": "Estoque",
+    "bannerKey": "estoqueBanner",
+    "shortcut": [
+      "Sem Estoque",
+      "Mais usados"
+    ],
+    "iconKeys": [
+      "OFFESTOQUE",
+      "MAISUSADO"
+    ],
+    "route": "PRODUCTSSCREEN"
+  }
+]

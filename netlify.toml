@@ -1,0 +1,17 @@
+# ══════════════════════════════════════════════════════════
+# Netlify — Configuração para deploy do Frontend (Expo Web)
+# ══════════════════════════════════════════════════════════
+
+[build]
+  base = "frontend"
+  command = "npx expo export --platform web"
+  publish = "dist"
+
+# Redireciona todas as rotas para index.html (SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  NODE_VERSION = "20"
