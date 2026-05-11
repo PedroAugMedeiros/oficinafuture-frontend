@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { 
+  ActivityIndicator, 
+  Alert, 
+  Pressable, 
+  StyleSheet, 
+  Text, 
+  TextInput, 
+  View, 
+  KeyboardAvoidingView, 
+  Platform, 
+  TouchableWithoutFeedback, 
+  Keyboard,
+  ScrollView
+} from 'react-native';
 import { useAuth } from '../context/AuthContext';
 import { colors } from './styles/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -30,48 +43,62 @@ export default function LoginScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.title}>Bem-vindo</Text>
-        <Text style={styles.subtitle}>Faça login para continuar</Text>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1, width: '100%' }}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <ScrollView 
+            contentContainerStyle={styles.scrollContainer}
+            keyboardShouldPersistTaps="handled"
+          >
+            <View style={styles.card}>
+              <Text style={styles.title}>Bem-vindo</Text>
+              <Text style={styles.subtitle}>Faça login para continuar</Text>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Usuário</Text>
-          <TextInput
-            style={styles.input}
-            value={username}
-            onChangeText={setUsername}
-            placeholder="Digite seu usuário"
-            autoCapitalize="none"
-          />
-        </View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.label}>Usuário</Text>
+                <TextInput
+                  style={styles.input}
+                  value={username}
+                  onChangeText={setUsername}
+                  placeholder="Digite seu usuário"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+              </View>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Senha</Text>
-          <TextInput
-            style={styles.input}
-            value={password}
-            onChangeText={setPassword}
-            placeholder="Digite sua senha"
-            secureTextEntry
-          />
-        </View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.label}>Senha</Text>
+                <TextInput
+                  style={styles.input}
+                  value={password}
+                  onChangeText={setPassword}
+                  placeholder="Digite sua senha"
+                  secureTextEntry
+                  autoCapitalize="none"
+                />
+              </View>
 
-        <Pressable 
-          style={({ pressed }) => [
-            styles.button,
-            pressed && styles.buttonPressed,
-            loading && styles.buttonDisabled
-          ]} 
-          onPress={handleLogin}
-          disabled={loading}
-        >
-          {loading ? (
-            <ActivityIndicator color={colors.surface} />
-          ) : (
-            <Text style={styles.buttonText}>Entrar</Text>
-          )}
-        </Pressable>
-      </View>
+              <Pressable 
+                style={({ pressed }) => [
+                  styles.button,
+                  pressed && styles.buttonPressed,
+                  loading && styles.buttonDisabled
+                ]} 
+                onPress={handleLogin}
+                disabled={loading}
+              >
+                {loading ? (
+                  <ActivityIndicator color={colors.surface} />
+                ) : (
+                  <Text style={styles.buttonText}>Entrar</Text>
+                )}
+              </Pressable>
+            </View>
+          </ScrollView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -80,6 +107,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+  },
+  scrollContainer: {
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
