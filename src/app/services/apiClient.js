@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { authService } from './auth';
+import { BASE_URL } from './config';
 
-const BASE_URL = 'http://localhost:8000/api/';
+const BASE_URL_WITH_SLASH = BASE_URL + '/';
+
 
 const apiClient = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL_WITH_SLASH,
   headers: { 'Content-Type': 'application/json' },
   timeout: 15000,
 });
