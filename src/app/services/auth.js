@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { BASE_URL } from './config';
 
+const BASE_URL = 'http://localhost:8000/api';
 const TOKEN_KEY = '@oficina:access_token';
 const REFRESH_KEY = '@oficina:refresh_token';
 
